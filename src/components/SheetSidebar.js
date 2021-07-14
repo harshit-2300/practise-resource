@@ -77,10 +77,10 @@ function ResponsiveDrawer(props) {
    
 	 
    useEffect(()=>{
-     fetch('https://harshit-resource.herokuapp.com/sheetNames').then(response=>response.json())
+     fetch('http://localhost:3001/sheetNames').then(response=>response.json())
    .then(names=>{
      setSheetNames(names);
-        //  console.log("sheetNames=======",names);
+         console.log("sheetNames=======",names);
    })
      .catch((err)=>console.log(err)); 
  },[]);
@@ -129,8 +129,8 @@ function ResponsiveDrawer(props) {
   
    
   localStorage.setItem("Testing","Harshit testing");
-  // const da=localStorage.getItem("Testing");
-  // console.log(da);
+  const da=localStorage.getItem("Testing");
+  console.log(da);
    
   return (
     <div className={classes.root}>
@@ -192,9 +192,10 @@ function ResponsiveDrawer(props) {
   {/*<==================== components of tiles that is content of each sheet ==================================== */}
         {currentSheet==="About" ? 
         <div><p>While practising data structures and algorithms many students are confused about which questions to practise and from which platform, this consumes a lot of time in exploring different platforms. Personally I faced this problem a lot, therefore I made this website to make our coding journey easier.</p>
-        <p>This is one stop destination for all the handpicked problems from various sheets available on internet with time more questions and Sheets will be added to this. </p>
+        <p>This is one stop destination for all the handpicked problems from various sheets available on internet, with time more questions and Sheets will be added to this. </p>
         <p>At present basic functionality such as checking the done questions is provided where you can check a question and the question will be marked checked with the current timestamp. Note:unmarking will clear your previous timeStamp.</p>
         <p>I have added my sheet which includes my favorite questions. If you want to contribute to the resource by adding questions,more sheets or want to suggest some features feel free to mail me at <a href="mailto:srivastavaharshitprep@gmail.com" >srivastavaharshitprep@gmail.com</a>. </p>
+        <p>A special thanks to all the content creators who are helping students by providing amazing content.</p>
         <Footer />
          </div>
                                    : <Tile currentSheet={currentSheet} ></Tile> }
