@@ -10,7 +10,7 @@ const date=(check)=>{
     if(check===false)
     return '';
     const d=new Date();
-    const temp=d.getDate().toString()+"/"+d.getMonth().toString()+'/'+d.getFullYear().toString()+ ' '+ d.toLocaleTimeString();;
+    const temp=d.getDate().toString()+"/"+(d.getMonth()+1).toString()+'/'+d.getFullYear().toString()+ ' '+ d.toLocaleTimeString();;
     return temp;
 }
 
