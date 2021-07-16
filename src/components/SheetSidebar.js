@@ -16,7 +16,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Tile from './Tile'
 import Footer from './Footer'
 import Sync from './Sync';
-
+import Loader from './Loader';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -70,14 +70,15 @@ function ResponsiveDrawer(props) {
    // <================= FETCHING THE SIDEBAR DATAA HERE =================================================>   
    // <================== CUSTOM STATES DEFINED ===================================================> 
    
-   const [sheetNames,setSheetNames]=useState(["Loading Please wait ..."]);
+   const [sheetNames,setSheetNames]=useState([{name : <Loader />,}]);
    const [currentSheet,setCurrentSheet]=useState('Select a sheet to practise');
+   
 
    // <================== CUSTOM STATES DEFINED ===================================================> 
    
 	 
-   useEffect(()=>{
-     fetch('https://harshit-resource.herokuapp.com/sheetNames').then(response=>response.json())
+   useEffect( ()=>{
+      fetch('https://harshit-resource.herokuapp.com/sheetNames').then(response=>response.json())
    .then(names=>{
      setSheetNames(names);
         //  console.log("sheetNames=======",names);
@@ -194,6 +195,7 @@ function ResponsiveDrawer(props) {
         <div><p>While practising data structures and algorithms many students are confused about which questions to practise and from which platform, this consumes a lot of time in exploring different platforms. Personally I faced this problem a lot, therefore I made this website to make our coding journey easier.</p>
         <p>This is one stop destination for all the handpicked problems from various sheets available on internet, with time more questions and Sheets will be added to this. </p>
         <p>At present basic functionality such as checking the done questions is provided where you can check a question and the question will be marked checked with the current timestamp. Note:unmarking will clear your previous timeStamp.</p>
+        <p><b>Update 1.1 :</b> Now you can sync your progress across all devices by simply going on the Sync tab after that you can enter your credentials which will give you options for sync.</p>
         <p>I have added my sheet which includes my favorite questions. If you want to contribute to the resource by adding questions,more sheets or want to suggest some features feel free to mail me at <a href="mailto:srivastavaharshitprep@gmail.com" >srivastavaharshitprep@gmail.com</a>. </p>
         <p>A special thanks to all the content creators who are helping students by providing amazing content.</p>
         <Footer />

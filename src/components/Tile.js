@@ -1,15 +1,16 @@
 import '../css/Tile.css'
 import React, { useEffect, useState } from 'react';
 import Checkbox from './Checkbox'
-
+import Loader from './Loader'
 
 
    
 
 function Tile({currentSheet}) {
     const [Questions, setQuestions] = useState([]);
-    
+    const [load,setLoad]=useState("");
     useEffect(()=>{
+       setLoad(<Loader />)
         fetch('https://harshit-resource.herokuapp.com/Questions',{
     		method:'post',
     		headers:{'Content-Type':'application/json'},
@@ -19,18 +20,21 @@ function Tile({currentSheet}) {
     	}).then(response=>response.json())
     	.then(ques=>{
     		setQuestions(ques);
+        setLoad("");
             // console.log("ques=======",ques);
     	})
         .catch((err)=>console.log(err)); 
     },[currentSheet]);
     
     // console.log("Ques is",Questions); 
-    // console.log("current sheet is",currentSheet);    
+    // console.log("current sheet is",currentSheet); 
+      
   return (
-    <div >
-    
-
-            {
+        
+        
+        <div >
+              <p>{load}</p>
+                {
                 Questions.map((ques,i)=>{
                         return(
                             <div key={i} className="Tile">
