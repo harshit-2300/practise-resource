@@ -56,7 +56,8 @@ export default function CustomizedButtons({loggedInAs}) {
        var i = keys.length;
     setProcess("Uploading ... ");
     while ( i-- ) {
-      
+        if(keys[i]==="Testing")
+        continue;
         payLoad.push( getItem(keys[i]));
     }
     // console.log(payLoad);
