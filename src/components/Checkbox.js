@@ -10,7 +10,10 @@ const date=(check)=>{
     if(check===false)
     return '';
     const d=new Date();
-    const temp=d.getDate().toString()+"/"+(d.getMonth()+1).toString()+'/'+d.getFullYear().toString()+ ' '+ d.toLocaleTimeString();;
+    const temp=('0'+d.getDate().toString()).slice(-2)+"/"+('0'+d.getMonth().toString()).slice(-2)+'/'+d.getFullYear().toString().slice(-2)+ ' '+ d.toLocaleTimeString('it-IT', {
+      hour: '2-digit',
+      minute:'2-digit'
+    });
     return temp;
 }
 
@@ -84,8 +87,6 @@ export default function CheckboxLabels({checked,ques}) {
       date:da,
     }
     localStorage.setItem(ques,JSON.stringify(val));
-    
-    
   };
   
   

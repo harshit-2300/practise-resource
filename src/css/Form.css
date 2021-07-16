@@ -1,0 +1,10 @@
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(233, 117, 50, 0.787);
+    opacity: 1; /* Firefox */
+  }
+
+  input:focus { 
+    outline: none !important;
+    border-color: #49463c;
+    box-shadow: 0 0 10px #dfb221;
+}

@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Tile from './Tile'
 import Footer from './Footer'
-
+import Sync from './Sync';
 
 const drawerWidth = 240;
 
@@ -70,7 +70,7 @@ function ResponsiveDrawer(props) {
    // <================= FETCHING THE SIDEBAR DATAA HERE =================================================>   
    // <================== CUSTOM STATES DEFINED ===================================================> 
    
-   const [sheetNames,setSheetNames]=useState([]);
+   const [sheetNames,setSheetNames]=useState(["Loading Please wait ..."]);
    const [currentSheet,setCurrentSheet]=useState('Select a sheet to practise');
 
    // <================== CUSTOM STATES DEFINED ===================================================> 
@@ -99,7 +99,7 @@ function ResponsiveDrawer(props) {
       <Divider />
       
       <List>
-        {["About"].map((text, index) => (
+        {["About","Sync"].map((text, index) => (
           <ListItem button key={text} onClick={()=>{ setCurrentSheet(text) }} >
             {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
             <ListItemText primary={text} />
@@ -128,7 +128,7 @@ function ResponsiveDrawer(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
   
    
-  localStorage.setItem("Testing","Harshit testing");
+  
   // const da=localStorage.getItem("Testing");
   // console.log(da);
    
@@ -198,9 +198,11 @@ function ResponsiveDrawer(props) {
         <p>A special thanks to all the content creators who are helping students by providing amazing content.</p>
         <Footer />
          </div>
-                                   : <Tile currentSheet={currentSheet} ></Tile> }
-        
-
+         :(currentSheet === "Sync" ? <Sync />
+          
+         : <Tile currentSheet={currentSheet} />
+          )
+          }
        
       </main>
     </div>
